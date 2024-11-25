@@ -7,9 +7,8 @@ def main():
     commands, queries = args_parser(args)
     LOGGER.info(f'Commands: {commands}, Queries: {queries}')
     if commands:
-        command_ids = get_ids_from_commands(commands)
-        LOGGER.info(f"Command IDs: '{command_ids}'")
-        validate_and_route_command_ids(command_ids, queries)
+        LOGGER.info(f"Command IDs: '{commands}'")
+        validate_and_route_commands(commands, queries)
     else:
         LOGGER.error(f"Entered commands are invalid")
 

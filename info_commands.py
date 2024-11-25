@@ -51,10 +51,10 @@ def request_recipe_name():
             print("Please enter a recipe name")
             
 
-def recipe(command_ids:str, queries:list) -> None:
+def recipe(commands:str, queries:list) -> None:
     LOGGER.info('RECIPE INFO: Showing info for single recipe')
 
-    if not command_ids:
+    if not commands:
         if (queries) and (len(queries) == 1):
             get_recipe_name(queries[0])
         elif (queries) and (len(queries) > 1):
@@ -66,7 +66,7 @@ def recipe(command_ids:str, queries:list) -> None:
         LOGGER.critical("Extra command functionality not implemented yet")
 
 
-def recipes(command_ids:str, queries:list) -> None:
+def recipes(commands:str, queries:list) -> None:
     LOGGER.info('RECIPES INFO: Listing all recipes')
     print("ALL RECIPES: ")
     with open("recipes.json", 'r') as jsonfile:
@@ -83,15 +83,15 @@ def recipes(command_ids:str, queries:list) -> None:
         else:
             print("Please enter a valid input")
 
-def ingredient(command_ids:str, queries:list):
+def ingredient(commands:str, queries:list):
     LOGGER.info('INGREDIENT INFO: Showing ingredient info')
     LOGGER.info('INGREDIENT INFO: Expecting an ingredient name after...')
 
-def ingredients(command_ids:str, queries:list):
+def ingredients(commands:str, queries:list):
     LOGGER.info('INGREDIENTS INFO: Listing all ingredients')
 
-def kitchen(command_ids:str, queries:list):
+def kitchen(commands:str, queries:list):
     LOGGER.info('KITCHEN INFO: Listing all kitchen contents')
 
-def errors(command_ids:str, queries:list):
+def errors(commands:str, queries:list):
     LOGGER.info('ERRORS INFO: Listing all errors')

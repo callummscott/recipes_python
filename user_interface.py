@@ -3,83 +3,83 @@ from logger_config import setup_logger
 import info_commands as info
 import edit_commands as edit
 
-COMMANDS:dict = {'edit':0, 'search':1, 'recipe':2, 'recipes':3, 'ingredient':4, 'ingredients':5, 'kitchen':6, 'errors':7}
+COMMANDS = {'edit', 'search', 'recipe', 'recipes', 'ingredient', 'ingredients', 'kitchen', 'errors'}
 LOGGER = setup_logger(__name__)
 
-def info_router(remaining_ids:str, queries:list) -> None:
-    if remaining_ids:
-        id = remaining_ids[0]
-    match id:
-        case '2':
-            info.recipe(remaining_ids, queries)
-        case '3':
-            info.recipes(remaining_ids, queries)
-        case '4':
-            info.ingredient(remaining_ids, queries)
-        case '5':
-            info.ingredients(remaining_ids, queries)
-        case '6':
-            info.kitchen(remaining_ids, queries)
-        case '7':
-            info.errors(remaining_ids, queries)
+def info_router(remaining_commands:str, queries:list) -> None:
+    if remaining_commands:
+        first_command = remaining_commands[0]
+    match first_command:
+        case 'recipe':
+            info.recipe(remaining_commands, queries)
+        case 'recipes':
+            info.recipes(remaining_commands, queries)
+        case 'ingredient':
+            info.ingredient(remaining_commands, queries)
+        case 'ingredients':
+            info.ingredients(remaining_commands, queries)
+        case 'kitchen':
+            info.kitchen(remaining_commands, queries)
+        case 'errors':
+            info.errors(remaining_commands, queries)
 
-def edit_router(remaining_ids:str, queries:list) -> None:
-    id = remaining_ids[0]
-    match id:
+def edit_router(remaining_commands:str, queries:list) -> None:
+    first_command = remaining_commands[0]
+    match first_command:
         case '2':
-            edit.recipe(remaining_ids, queries)
+            edit.recipe(remaining_commands, queries)
         case '3':
-            edit.recipes(remaining_ids, queries)
+            edit.recipes(remaining_commands, queries)
         case '4':
-            edit.ingredient(remaining_ids, queries)
+            edit.ingredient(remaining_commands, queries)
         case '5':
-            edit.ingredients(remaining_ids, queries)
+            edit.ingredients(remaining_commands, queries)
         case '6':
-            edit.kitchen(remaining_ids, queries)
+            edit.kitchen(remaining_commands, queries)
         case '7':
-            edit.errors(remaining_ids, queries)
+            edit.errors(remaining_commands, queries)
 
-def search_router(remaining_ids:str, queries:list) -> None:
-    id = remaining_ids[0]
-    match id:
+def search_router(remaining_commands:str, queries:list) -> None:
+    first_command = remaining_commands[0]
+    match first_command:
         case '2':
             LOGGER.critical("SEARCH CASE 'recipe': Not completed yet")
         case '3':
             LOGGER.error('User did "search recipes", don\'t know what to do about that.')
 
 
-def validate_and_route_command_ids(command_ids:list, queries:list):
-    """ Does first pass of checks on the command_ids, ensuring some validity, and then calls relevant functions based on inputs """
-    if ('0' not in command_ids) and ('1' not in command_ids):
+def validate_and_route_commands(commands:list, queries:list):
+    """ Does first pass of checks on the commands, ensuring some validity, and then calls relevant functions based on inputs """
+    if ('edit' not in commands) and ('search' not in commands):
         # Do info stuff
         LOGGER.info("SUCCESS: Routing to 'info' section")
-        remaining_command_ids = command_ids
-        if remaining_command_ids:
-            LOGGER.info(f"Calling info_router with remaining_ids = '{remaining_command_ids}'")
-            info_router(remaining_command_ids, queries)
+        remaining_commands = commands
+        if remaining_commands:
+            LOGGER.info(f"Calling info_router with remaining_commands = {remaining_commands}")
+            info_router(remaining_commands, queries)
         else:
             # Don't think this can actually be triggered, other functions handle that
             LOGGER.critical("Something that doesn't make any sense to me has happened")
             print("ERROR: Command required")
         ...
-    elif ('0' in command_ids) and ('1' not in command_ids):
+    elif ('edit' in commands) and ('search' not in commands):
         # Do editing stuff
         LOGGER.info("SUCCESS: Routing to 'edit' section")
-        remaining_command_ids = command_ids[1:]
-        if remaining_command_ids:
-            LOGGER.info(f"Calling edit_router with remaining_ids = '{remaining_command_ids}'")
-            edit_router(remaining_command_ids, queries)
+        remaining_commands = commands.remove('edit')
+        if remaining_commands:
+            LOGGER.info(f"Calling edit_router with remaining_commands = '{remaining_commands}'")
+            edit_router(remaining_commands, queries)
         else:
             LOGGER.error(f"MISSING NOUN: 'edit' isn't operating on another command")
             print("ERROR: 'edit' requires another command to operate on (e.g. `edit kitchen`)")
         ...
-    elif ('0' not in command_ids) and ('1' in command_ids):
+    elif ('edit' not in commands) and ('search' in commands):
         # Do search stuff
         LOGGER.info("SUCCESS: Routing to 'search' section")
-        remaining_command_ids = command_ids[1:]
-        if remaining_command_ids:
-            LOGGER.info(f"Calling search_router with remaining_ids = '{remaining_command_ids}'")
-            search_router(remaining_command_ids, queries)
+        remaining_commands = commands.remove('search')
+        if remaining_commands:
+            LOGGER.info(f"Calling search_router with remaining_commands = '{remaining_commands}'")
+            search_router(remaining_commands, queries)
         else:
             LOGGER.error(f"MISSING NOUN: 'search' isn't operating on another command")
             print("ERROR: 'search' requires command to operate on (e.g. `search recipes`)")
@@ -87,16 +87,6 @@ def validate_and_route_command_ids(command_ids:list, queries:list):
     else:
         # Both 'edit' and 'search' have been entered
         LOGGER.error("ERROR: Both 'edit' and 'search' have been entered")
-
-
-def get_ids_from_commands(user_commands:list) -> str:
-    LOGGER.info("Beginning conversion of commands to IDs")
-    arg_contents:str = ""
-    for key, value in COMMANDS.items():
-        if key in user_commands:
-            arg_contents += str(value)
-    LOGGER.info(f"OUTPUT: Command IDs string is '{arg_contents}'")
-    return arg_contents
 
 
 def args_parser(args:list) -> tuple:
@@ -154,8 +144,7 @@ if __name__ == "__main__":
     args = sys.argv[1:]
     commands, queries = args_parser(args)
     if commands:
-        command_ids = get_ids_from_commands(commands)
-        validate_and_route_command_ids(command_ids)
+        validate_and_route_commands(commands)
 
     # print(command_and_query_parser(args))
 
