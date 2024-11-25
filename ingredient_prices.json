@@ -1,0 +1,122 @@
+{
+    "egg" : {
+        "ALDI" : {
+            "6" : "£1.69",
+            "12" : "£2.79"
+        },
+        "LIDL" : {
+            "12" : "£2.79"
+        }
+    },
+    "carrot" : {
+        "ALDI" : {
+            "1kg" : "£0.69",
+            "500g" : "£0.38"
+        }
+    },
+    "chicken breast" : {
+        "ALDI" : {
+            "2kg" : "£11.99",
+            "1kg" : "£6.49"
+        }
+    },
+    "rice" : {
+        "ALDI" : {
+            "1kg" : "£1.25" 
+        }
+    },
+    "onion" : {
+        "ALDI" : {
+            "3" : "£0.89"
+        },
+        "LIDL" : {
+            "3" : "£0.89"
+        }
+    },
+    "garlic clove" : {
+        "ALDI" : {
+            "12" : "£0.37"
+        }
+    },
+    "savoy cabbage" : {
+        "ALDI" : {
+            "1" : "£0.75"
+        }
+    },
+    "chinese cabbage" : {
+        "ALDI" : {
+            "1" : "£0.99"
+        }
+    },
+    "vegetable oil" : {
+        "ALDI" : {
+            "1L" : "£1.99"
+        }
+    },
+    "soy sauce" : {
+        "ALDI" : {
+            "150ml" : "£0.59"
+        }
+    },
+    "fish sauce" : {
+        "ASDA" : {
+            "150ml" : "£1.75"
+        }
+    },
+    "sriracha" : {
+        "ALDI" : {
+            "535g" : "£1.99" 
+        }
+    },
+    "milk" : {
+        "LIDL" : {
+            "6pt" : "£2.15"
+        }
+    },
+    "potatoes" : {
+        "LIDL" : {
+            "2kg" : "£1.79"
+        }
+    },
+    "black beans" : {
+        "LIDL" : {
+            "240g" : "£0.49"
+        }
+    },
+    "sweetcorn" : {
+        "LIDL" : {
+            "285g" : "£0.65"
+        }
+    },
+    "chicken thighs" : {
+        "LIDL" : {
+           "" : "£4.99"
+        }
+    },
+    "cucumber" : {
+        "LIDL" : {
+            "1" : "£0.69"
+        }
+    },
+    "banana" : {
+        "LIDL" : {
+            "1kg" : "£0.90",
+            "5" : "£0.76"
+        }
+    },
+    "cheddar" : {
+        "LIDL" : {
+            "" : "£2.49"
+        }
+    },
+    "sausages" : {
+        "LIDL" : {
+            "6" : "£2.49"
+        }
+    },
+    "spreadable butter" : {
+        "LIDL" : {
+            "" : "£2.29"
+        }
+    }
+}

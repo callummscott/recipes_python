@@ -1,0 +1,120 @@
+{
+    "nasi goreng": {
+        "meta": {
+            "url": "https://www.bbcgoodfood.com/recipes/quick-spicy-nasi-goreng",
+            "time": "dinner",
+            "servings": "1",
+            "keywords": "nasi | goreng | fried rice | asian | egg"
+        },
+        "primary": {
+            "carrot": "1",
+            "onion": "1",
+            "garlic clove": "2",
+            "egg": "1",
+            "savoy cabbage | chinese cabbage": "0.5"
+        },
+        "secondary": {
+            "required": {
+                "soy sauce": "1tbsp",
+                "vegetable oil": "2tbsp"
+            },
+            "optional": {
+                "fish sauce": "1tbsp",
+                "sriracha": "to taste"
+            }
+        }
+    },
+    "chicken noodle soup": {
+        "meta": {
+            "url": "https://www.bbcgoodfood.com/recipes/chicken-noodle-soup",
+            "time": "dinner| lunch | snack",
+            "servings": "2",
+            "keywords": "chicken | noodle | soup | noodle soup | cold | winter | sick"
+        },
+        "primary": {
+            "chicken stock | vegetable stock | miso soup": "900ml",
+            "chicken breast": "1",
+            "ginger": "1tsp",
+            "garlic clove": "1",
+            "rice": "50g",
+            "sweetcorn": "2tbsp",
+            "mushrooms": "2-3",
+            "spring onions": "2",
+            "soy sauce": "2tsp"
+        },
+        "secondary": {
+            "optional": {
+                "mint | basil leaves | chilli": "to taste"
+            }
+        }
+    },
+    "peanut butter & banana on toast": {
+        "meta": {
+            "url": "N/A",
+            "time": "lunch | breakfast | snack",
+            "servings": "1",
+            "keywords": "peanut butter | toast | banana | protein"
+        },
+        "primary": {
+            "banana": "1",
+            "bread slice": "1-2",
+            "peanut butter": "3tbsp"
+        },
+        "secondary": {
+            "optional": {
+                "honey": "to taste"
+            }
+        }
+    },
+    "tuna pasta": {
+        "meta": {
+            "url": "N/A",
+            "time": "lunch",
+            "servings": "2",
+            "keywords": "tuna | mayo | mayonaise | tuna mayo | pasta | sweetcorn | vegetables"
+        },
+        "primary": {
+            "tin of tuna": "2",
+            "mayonnaise": "3tbsp",
+            "pasta": "200g"
+        },
+        "secondary": {
+            "required": {
+                "sweetcorn": "70g"
+            },
+            "optional": {
+                "tomato | cherry tomatoes": "1 | 50g",
+                "cucumber": "0.5",
+                "black pepper": "to taste",
+                "lemon juice": "to taste",
+                "parsley": "to taste"
+            }
+        }
+    },
+    "sausage rigatoni bake": {
+        "meta": {
+            "url": "https://www.bbcgoodfood.com/recipes/courgette-sausage-rigatoni-bakes",
+            "time": "dinner",
+            "servings": "2",
+            "keywords": "sausage | rigatoni | pasta | tomato | one-pot | easy | courgette | rigatoni bake"
+        },
+        "primary": {
+            "pork sausage": "3-4",
+            "tin of chopped tomatoes": "1",
+            "garlic cloves": "2",
+            "courgette": "2",
+            "pasta": "220g"
+        },
+        "secondary": {
+            "required": {
+                "vegetable oil": "2tbsp"
+            },
+            "optional": {
+                "mozzarella ball": "1",
+                "chilli flakes": "1tsp",
+                "salt": "to taste",
+                "pepper": "to taste"
+            }
+        }
+    }
+}

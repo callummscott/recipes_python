@@ -1,0 +1,10 @@
+myenv/
+unit_tests/
+__pycache__/
+.pytest_cache/
+backups/
+
+backup.bat
+
+*.log
+requirements.txt
