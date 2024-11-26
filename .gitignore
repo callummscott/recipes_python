@@ -7,4 +7,5 @@ backups/
 backup.bat
 
 *.log
+*.drawio
 requirements.txt

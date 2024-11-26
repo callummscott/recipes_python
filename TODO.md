@@ -1,39 +1,28 @@
-# Plan:
-- HARD: Be able to type in the ingredients that you have, and then find recipes that are closest to that/what you can already make
-- MEDIUM: Be able to find recipes that require the minimum ingredients to buy/that is the lowest cost for you to buy -- requires a `cupboards.json`
-- EASY: Be able to specify meal types that you're looking for: 'breakfast, lunch, dinner, snack'
-- WIP: Create a system for streamlining the addition of new recipes
-- EASY: Be able to calculate prices of specific recipes
-- Be able to flag potential ingredient duplicates (e.g. 'basil'/'basil leaves', 'mushrooms'/'chestnut mushrooms', 'miso soup mix'/'miso soup')
-- Fix the discrepancies between ingredients and what is bought (e.g. 'loaf' -> #? 'bread slice', 'garlic' -> #? 'garlic clove') 
-- Incorporate serving, and potentially ultimately calorie information
+# TODO
+## In progress
+- Remove all 'destination command' arguments for any residual commands in `\w+_commands.py` files -- residual commands should have already been accounted for by here.
+- Move all references to destination commands like `edit_kitchen` from `user_interface.py` to a separate `\w+_commands.py` file.
+- Correct and remove any reference to `recipes recipe` accepting 'servings' arguments, reserve that functionality for `recipes recipe ingredients` 
+- Try to create some kind of abstraction for handling inputs in the `\w+_commands.py` files, be it from `input()` or queries -- i.e. see if you can justify something
+- Organise the files better because it's an absolute state -- maybe separate the JSON related stuff first
+- Get `recipes recipes` -> `n` actually working like how `recipes recipe <name>` works
+## Done
+- Abstracted the gaudy and repetitious `validate_and_route_commands` function.
+- Switch `match case` to something that checks inside
+- Fix `request_recipe_name` and `get_recipe_name` functions, i.e. replace `for key in recipes` with `try: recipes[query] ...`
+- Get `recipes recipe *<recipe name>` working
+- Remove references to `remaining_commands` in the info file
+- Probably figure out a more streamlined way of handling command combinations
+## Dropped
+- Implement the servings functionality for `recipes recipe \<recipe name\> \<servings\>
+    Avoiding servings functionality for `recipes recipe`, reserving it instead for `recipes recipe ingredients`
+- Figure out better names for these damn functions
+    Too vague an objective, need to be more specific
 
-## `Recipes.json`
-```json
-{
-    "example recipe name" : {
-        "meta" : {
-            "url" : "www.this.is/just/an/example/?q=url",
-            "time" : "dinner | lunch | breakfast | snack",
-            "servings": "n",
-            "keywords" : "one keyword | another keyword"
-        },
-        "primary" : {
-            `ingredient` : `quantity`,
-            `ingredient` : `quantity`
-        },
-        "secondary" : {
-            "required" : {
-                `ingredient` : `quantity`
-            },
-            "optional" : {
-                `ingredient` : `quantity`
-            }
-        }
-    }
-}
-```
+<br>
+<br>
+<br>
 
-## Discussion
+# Discussion
 - I'm trying to figure out how to format and store the cupboard.json information. I think I want Enums for the ingredients, so that you essentially can't type in a new ingredient unless it's formally added into the mix.
 - I'm also struggling with how I might handle variants, for example "cherry tomatoes", "beef tomatoes", "vine tomatoes" im sandwiches, etc. Should my recipes specify every single possible variant that could be substituted, or do I store that kind of information externally? I could even try to automatically change cases with hyperspecific ingredient references to more diverse ones -- e.g. If it detects 'fish', it automatically asks what I meant more specifically, but now we're talking about introducing *categories* of foods that might be substitutable ("eggs" -> "large eggs | medium eggs"; "fish" -> "haddock | sea bass | cod | tuna steak |"). I'd need like a hierarchy of foods labels. At the very least, if I just documented common ambiguities and tried to 

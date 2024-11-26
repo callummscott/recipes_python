@@ -1,6 +1,12 @@
 from logger_config import setup_logger
 
 LOGGER = setup_logger(__name__)
+def router(commands, queries):
+    ...
+
+
+
+
 
 # EDIT COMMANDS
 def recipe(commands:str, queries:list):

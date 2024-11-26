@@ -6,22 +6,6 @@ import edit_commands as edit
 COMMANDS = {'edit', 'search', 'recipe', 'recipes', 'ingredient', 'ingredients', 'kitchen', 'errors'}
 LOGGER = setup_logger(__name__)
 
-def info_router(remaining_commands:str, queries:list) -> None:
-    if remaining_commands:
-        first_command = remaining_commands[0]
-    match first_command:
-        case 'recipe':
-            info.recipe(remaining_commands, queries)
-        case 'recipes':
-            info.recipes(remaining_commands, queries)
-        case 'ingredient':
-            info.ingredient(remaining_commands, queries)
-        case 'ingredients':
-            info.ingredients(remaining_commands, queries)
-        case 'kitchen':
-            info.kitchen(remaining_commands, queries)
-        case 'errors':
-            info.errors(remaining_commands, queries)
 
 def edit_router(remaining_commands:str, queries:list) -> None:
     first_command = remaining_commands[0]
@@ -48,45 +32,37 @@ def search_router(remaining_commands:str, queries:list) -> None:
             LOGGER.error('User did "search recipes", don\'t know what to do about that.')
 
 
+def filter_commands_and_direct_to_router(all_commands:list, queries:list, cmd_to_remove:str, remove=True):
+    """ Extracts, if necessary, the command from the list, and calls the respective router function """
+
+    LOGGER.info(f"SUCCESS: Routing to '{cmd_to_remove}' section")
+    remaining_commands = all_commands
+
+    if remove:
+        remaining_commands.remove(cmd_to_remove)
+
+    if remaining_commands:
+        LOGGER.info(f"Calling {cmd_to_remove}.router with remaining_commands = {remaining_commands}")
+        globals()[cmd_to_remove].router(remaining_commands, queries)
+    else:
+        #? What does this part do exactly? Can't quite understand it atm
+        LOGGER.critical("Something that doesn't make any sense to me has happened")
+        print("ERROR: Command required")
+
+
 def validate_and_route_commands(commands:list, queries:list):
-    """ Does first pass of checks on the commands, ensuring some validity, and then calls relevant functions based on inputs """
-    if ('edit' not in commands) and ('search' not in commands):
-        # Do info stuff
-        LOGGER.info("SUCCESS: Routing to 'info' section")
-        remaining_commands = commands
-        if remaining_commands:
-            LOGGER.info(f"Calling info_router with remaining_commands = {remaining_commands}")
-            info_router(remaining_commands, queries)
-        else:
-            # Don't think this can actually be triggered, other functions handle that
-            LOGGER.critical("Something that doesn't make any sense to me has happened")
-            print("ERROR: Command required")
-        ...
-    elif ('edit' in commands) and ('search' not in commands):
-        # Do editing stuff
-        LOGGER.info("SUCCESS: Routing to 'edit' section")
-        remaining_commands = commands.remove('edit')
-        if remaining_commands:
-            LOGGER.info(f"Calling edit_router with remaining_commands = '{remaining_commands}'")
-            edit_router(remaining_commands, queries)
-        else:
-            LOGGER.error(f"MISSING NOUN: 'edit' isn't operating on another command")
-            print("ERROR: 'edit' requires another command to operate on (e.g. `edit kitchen`)")
-        ...
-    elif ('edit' not in commands) and ('search' in commands):
-        # Do search stuff
-        LOGGER.info("SUCCESS: Routing to 'search' section")
-        remaining_commands = commands.remove('search')
-        if remaining_commands:
-            LOGGER.info(f"Calling search_router with remaining_commands = '{remaining_commands}'")
-            search_router(remaining_commands, queries)
-        else:
-            LOGGER.error(f"MISSING NOUN: 'search' isn't operating on another command")
-            print("ERROR: 'search' requires command to operate on (e.g. `search recipes`)")
-        ...
+    """ Checks for 'verb' commands, directs to next level of routing ('info', 'edit', or 'search') """
+
+    if ('edit' not in commands) and ('search' not in commands): # Check if comamnd is INFO related
+        filter_commands_and_direct_to_router(commands, queries, 'info', remove=False)
+    elif ('edit' in commands) and ('search' not in commands):   # Check if comamnd is EDIT related
+        filter_commands_and_direct_to_router(commands, queries, 'edit', remove=True)
+    elif ('edit' not in commands) and ('search' in commands):   # Check if comamnd is SEARCH related
+        filter_commands_and_direct_to_router(commands, queries, 'search', remove=True)
     else:
         # Both 'edit' and 'search' have been entered
         LOGGER.error("ERROR: Both 'edit' and 'search' have been entered")
+        print("ERROR: Both 'edit' and 'search' have been entered")
 
 
 def args_parser(args:list) -> tuple:
@@ -143,6 +119,7 @@ def args_parser(args:list) -> tuple:
 if __name__ == "__main__":
     args = sys.argv[1:]
     commands, queries = args_parser(args)
+    print(commands)
     if commands:
         validate_and_route_commands(commands)
 
