@@ -1,23 +1,15 @@
 # TODO
 ## In progress
-- Remove all 'destination command' arguments for any residual commands in `\w+_commands.py` files -- residual commands should have already been accounted for by here.
-- Move all references to destination commands like `edit_kitchen` from `user_interface.py` to a separate `\w+_commands.py` file.
-- Correct and remove any reference to `recipes recipe` accepting 'servings' arguments, reserve that functionality for `recipes recipe ingredients` 
+- Make `elif`s more efficient with command branching
 - Try to create some kind of abstraction for handling inputs in the `\w+_commands.py` files, be it from `input()` or queries -- i.e. see if you can justify something
 - Organise the files better because it's an absolute state -- maybe separate the JSON related stuff first
 - Get `recipes recipes` -> `n` actually working like how `recipes recipe <name>` works
 ## Done
-- Abstracted the gaudy and repetitious `validate_and_route_commands` function.
-- Switch `match case` to something that checks inside
-- Fix `request_recipe_name` and `get_recipe_name` functions, i.e. replace `for key in recipes` with `try: recipes[query] ...`
-- Get `recipes recipe *<recipe name>` working
-- Remove references to `remaining_commands` in the info file
-- Probably figure out a more streamlined way of handling command combinations
+- Move all references to destination functions like `edit_kitchen` from `user_interface.py` to a separate `\w+_commands.py` file.
+- Correct and remove any reference to `recipes recipe` accepting 'servings' arguments, reserve that functionality for `recipes recipe ingredients` 
+- Remove all 'destination command' arguments for any residual commands in `\w+_commands.py` files -- residual commands should have already been accounted for by here.
 ## Dropped
-- Implement the servings functionality for `recipes recipe \<recipe name\> \<servings\>
-    Avoiding servings functionality for `recipes recipe`, reserving it instead for `recipes recipe ingredients`
-- Figure out better names for these damn functions
-    Too vague an objective, need to be more specific
+
 
 <br>
 <br>

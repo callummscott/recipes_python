@@ -6,32 +6,6 @@ import edit_commands as edit
 COMMANDS = {'edit', 'search', 'recipe', 'recipes', 'ingredient', 'ingredients', 'kitchen', 'errors'}
 LOGGER = setup_logger(__name__)
 
-
-def edit_router(remaining_commands:str, queries:list) -> None:
-    first_command = remaining_commands[0]
-    match first_command:
-        case '2':
-            edit.recipe(remaining_commands, queries)
-        case '3':
-            edit.recipes(remaining_commands, queries)
-        case '4':
-            edit.ingredient(remaining_commands, queries)
-        case '5':
-            edit.ingredients(remaining_commands, queries)
-        case '6':
-            edit.kitchen(remaining_commands, queries)
-        case '7':
-            edit.errors(remaining_commands, queries)
-
-def search_router(remaining_commands:str, queries:list) -> None:
-    first_command = remaining_commands[0]
-    match first_command:
-        case '2':
-            LOGGER.critical("SEARCH CASE 'recipe': Not completed yet")
-        case '3':
-            LOGGER.error('User did "search recipes", don\'t know what to do about that.')
-
-
 def filter_commands_and_direct_to_router(all_commands:list, queries:list, cmd_to_remove:str, remove=True):
     """ Extracts, if necessary, the command from the list, and calls the respective router function """
 

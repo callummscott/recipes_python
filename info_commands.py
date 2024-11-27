@@ -107,17 +107,17 @@ def router(commands:str, queries:list) -> None:
     elif cmds == {'recipes'}:
         recipes(queries)
     elif cmds == {'ingredient'}:
-        ingredient(cmds, queries)
+        ingredient(queries)
     elif cmds == {'ingredients'}:
-        ingredients(cmds, queries)
+        ingredients(queries)
     elif (cmds == {'kitchen'}) or (cmds == {'kitchen', 'ingredients'}):
-        kitchen(cmds, queries)
+        kitchen(queries)
     elif cmds == {'errors'}:
-        errors(cmds, queries)
+        errors(queries)
     elif (cmds == {'recipe', 'ingredient'}) or (cmds == {'recipes', 'ingredient'}):
         print("ERROR: Command not recognised. Did you mean `recipes recipe ingredients`?")
     elif cmds == {'recipe', 'ingredients'}:
-        #recipe_ingredients(cmds, queries)
+        #recipe_ingredients(queries)
         ...
     elif cmds == {'recipes', 'ingredients'}:
         print("ERROR: Command not recognised. Did you mean `recipes recipe ingredients`, or `recipes ingredients`?")
@@ -125,7 +125,7 @@ def router(commands:str, queries:list) -> None:
         print("ERROR: Command not recognised. Did you mean `recipes kitchen recipes`?")
     elif cmds == {'kitchen', 'recipes'}:
         #TODO This is a complicated one, filter all recipes to show only what can be made
-        #kitchen_recipes(cmds, queries)
+        #kitchen_recipes(queries)
         LOGGER.critical("Have yet to implement the complex functionality of `recipes kitchen recipes`")
     elif cmds == {'kitchen', 'ingredient'}:
         print("ERROR: Command not recognised. Did you mean `recipes kitchen ingredients`?")
@@ -133,24 +133,24 @@ def router(commands:str, queries:list) -> None:
         print("ERROR: Command was not recognised")
             
 
-def ingredient(commands:list, queries:list):
+def ingredient(queries:list):
     LOGGER.info('INGREDIENT INFO: Showing ingredient info')
     LOGGER.info('INGREDIENT INFO: Expecting an ingredient name after...')
 
-def ingredients(commands:list, queries:list):
+def ingredients(queries:list):
     LOGGER.info('INGREDIENTS INFO: Listing all ingredients')
 
-def kitchen(commands:list, queries:list):
+def kitchen(queries:list):
     LOGGER.info('KITCHEN INFO: Listing all kitchen contents')
 
-def errors(commands:list, queries:list):
+def errors(queries:list):
     LOGGER.info('ERRORS INFO: Listing all errors')
 
-def recipe_ingredients(commands:list, queries:list):
+def recipe_ingredients(queries:list):
     LOGGER.info('RECIPE INGREDIENTS INFO: Listing all recipe ingredients')
     LOGGER.info('RECIPE INGREDIENTS INFO: Expecting a recipe name after...')
 
-def kitchen_recipes(commands:list, queries:list):
+def kitchen_recipes(queries:list):
     LOGGER.info('KITCHEN RECIPES: Listing all viable recipes from kitchen ingredients')
 
     
