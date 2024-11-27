@@ -1,13 +1,17 @@
 # TODO
 ## In progress
-- Make `elif`s more efficient with command branching
-- Try to create some kind of abstraction for handling inputs in the `\w+_commands.py` files, be it from `input()` or queries -- i.e. see if you can justify something
+- Probably clean up the imports in the `commands/` files, and maybe elsewhere, with all this file system changing it'll probs be a mess.
+- Implement `add`, `remove` functionality for `edit recipes`
+- Implement `edit` functionality for `recipes recipes` so that I finally don't have to edit the json directly. 
 - Organise the files better because it's an absolute state -- maybe separate the JSON related stuff first
 - Get `recipes recipes` -> `n` actually working like how `recipes recipe <name>` works
 ## Done
-- Move all references to destination functions like `edit_kitchen` from `user_interface.py` to a separate `\w+_commands.py` file.
-- Correct and remove any reference to `recipes recipe` accepting 'servings' arguments, reserve that functionality for `recipes recipe ingredients` 
-- Remove all 'destination command' arguments for any residual commands in `\w+_commands.py` files -- residual commands should have already been accounted for by here.
+- Try to create some kind of abstraction for handling inputs in the `commands/` files, be it from `input()` or queries -- i.e. see if you can justify something <- Made some solid progress with this already, so that's great actually.
+- Make `elif`s more efficient with command branching -- I think I'll have to convert the `commands` to something hashable (and sets/lists aren't), so maybe command IDs are coming back.
+- Potentially separate the routing from the 'general' command functions
+- Rework the whole routing procedure to work with the new `commands` folder
+- Potentially group together all commands in a `commands` folder and organise by 'verb' rather than 'noun' -- as they are atm -- since similar 'verb's seem to share a lot of code
+
 ## Dropped
 
 
