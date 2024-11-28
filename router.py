@@ -107,7 +107,7 @@ def validate_and_route_commands(commands:list, queries:list):
     }
 
     try:
-        command = functions[command_hash](queries)
+        functions[command_hash](queries)
     except KeyError:
         print("ERROR: Function was not recognised")
         LOGGER.error("ERROR: Function was not recognised")

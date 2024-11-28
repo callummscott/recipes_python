@@ -11,7 +11,7 @@ def info_recipe(queries:list) -> None:
         if len(queries) == 1:
             query = queries[0]
             try:
-                print_recipe[query]
+                print_recipe(query)
             except KeyError:
                 LOGGER.error(f"'{query}' was not found in `recipes`")
                 print(f"ERROR: No such recipe by the name of '{query}' was found")

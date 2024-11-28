@@ -16,7 +16,7 @@ def info_recipes(queries:list) -> None:
             response = input("To inspect each recipe type its number, or type 'q' to cancel\n")
             if response.isdigit(): # Only allows "<int>", where <int> >= 0
                 LOGGER.info(f"User specified: '{response}'")
-                recipe_name = response
+                recipe_name = number_to_recipe_name[int(response)]
                 print_recipe(recipe_name)
                 break
             elif response in EXIT_PHRASES:

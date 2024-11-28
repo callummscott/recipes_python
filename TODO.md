@@ -6,11 +6,6 @@
 - Organise the files better because it's an absolute state -- maybe separate the JSON related stuff first
 - Get `recipes recipes` -> `n` actually working like how `recipes recipe <name>` works
 ## Done
-- Try to create some kind of abstraction for handling inputs in the `commands/` files, be it from `input()` or queries -- i.e. see if you can justify something <- Made some solid progress with this already, so that's great actually.
-- Make `elif`s more efficient with command branching -- I think I'll have to convert the `commands` to something hashable (and sets/lists aren't), so maybe command IDs are coming back.
-- Potentially separate the routing from the 'general' command functions
-- Rework the whole routing procedure to work with the new `commands` folder
-- Potentially group together all commands in a `commands` folder and organise by 'verb' rather than 'noun' -- as they are atm -- since similar 'verb's seem to share a lot of code
 
 ## Dropped
 
