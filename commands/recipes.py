@@ -71,6 +71,10 @@ def add_recipe():
             print(" - Type in your new recipe name")
             print(" - Type 'q' or 'quit' to exit")
 
+        if recipe_already_exists(response):
+            print("ERROR: A recipe by this name already exists! ")
+            break
+
         check = clean_input(f"The new recipe name will be '{response.upper()}'. Press enter to continue, 'n' to retry, or type 'h' or 'help'. ")
         if check:
             if check in NO_PHRASES:
@@ -85,7 +89,10 @@ def add_recipe():
         else: # i.e. Press 'enter'
             with open(RECIPES_FILENAME, 'r') as jsonfile:
                 recipes = json.load(jsonfile)
-            recipes[response] = dict()
+            recipes[response] = {
+                "meta" : { "url" : "", "times" : [], "servings" : "", "keywords" : [] },
+                "ingredients" : { "primary" : {}, "secondary" : {"required" : {}, "optional" : {}} }
+            }
             with open(RECIPES_FILENAME, 'w') as jsonfile:
                 json.dump(recipes, jsonfile, indent=4, separators=(',', ' : '))
             break
@@ -105,3 +112,10 @@ def change_recipe():
 def reset_recipes():
     print("RESETTING")
     ...
+
+def recipe_already_exists(recipe_name:str) -> bool:
+    try:
+        get_recipe_by_name(recipe_name)
+        return True
+    except KeyError:
+        return False

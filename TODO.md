@@ -8,8 +8,8 @@
 - Organise the files better because it's an absolute state -- maybe separate the JSON related stuff first
 - Get `recipes recipes` -> `n` actually working like how `recipes recipe <name>` works
 ## Done
-- Define a consistent system for storing ingredient information in `json` format that actually works -- are ingredients all going to be dicts? If so, then what about substitutable ingredients like 'veg stock / chicken stock'? I'm conflicted about standard json conventions vs how to make searches more efficient (i.e. I think `dict` formats are just better for searchability)
-- Either figure out how I'm going to actually edit `json` files or find a completely new kind of file format to work with.
+- Update the default 'add recipe' format to the actual `meta, ingredients : primary, required, ...` format
+- When creating a new recipe, run a check to make sure that the name doesn't already exist, and if it does suggest 'changing' or 'resetting' instead
 
 ## Dropped
 

@@ -34,7 +34,7 @@
     "chicken noodle soup" : {
         "meta" : {
             "url" : "https://www.bbcgoodfood.com/recipes/chicken-noodle-soup",
-            "time" : ["dinner", "lunch", "snack"],
+            "times" : ["dinner", "lunch", "snack"],
             "servings" : "2",
             "keywords" : ["chicken", "noodle", "soup", "noodle soup", "cold", "winter", "sick"]
         },
@@ -82,7 +82,7 @@
     "peanut butter & banana on toast" : {
         "meta" : {
             "url" : "N/A",
-            "time" : ["lunch", "breakfast", "snack"],
+            "times" : ["lunch", "breakfast", "snack"],
             "servings" : "1",
             "keywords" : ["peanut butter", "toast", "banana", "protein"]
         },
@@ -106,7 +106,7 @@
     "tuna pasta" : {
         "meta" : {
             "url" : "N/A",
-            "time" : ["lunch"],
+            "times" : ["lunch"],
             "servings" : "2",
             "keywords" : ["tuna", "mayo", "mayonaise", "tuna mayo", "pasta", "sweetcorn", "vegetables"]
         },
@@ -138,7 +138,7 @@
     "sausage rigatoni bake" : {
         "meta" : {
             "url" : "https://www.bbcgoodfood.com/recipes/courgette-sausage-rigatoni-bakes",
-            "time" : ["dinner"],
+            "times" : ["dinner"],
             "servings" : "2",
             "keywords" : ["sausage", "rigatoni", "pasta", "tomato", "one-pot", "easy", "courgette", "rigatoni bake"]
         },
