@@ -1,11 +1,15 @@
 # TODO
 ## In progress
+- Just used `recipes recipe` and expected a numbered list but obvs I implemented a manual text input -- not sure I should keep that now.
+- When prompted for manual input for 'recipes', don't just offer numerical input but also recipe name input.
 - Probably clean up the imports in the `commands/` files, and maybe elsewhere, with all this file system changing it'll probs be a mess.
 - Implement `add`, `remove` functionality for `edit recipes`
 - Implement `edit` functionality for `recipes recipes` so that I finally don't have to edit the json directly. 
 - Organise the files better because it's an absolute state -- maybe separate the JSON related stuff first
 - Get `recipes recipes` -> `n` actually working like how `recipes recipe <name>` works
 ## Done
+- Define a consistent system for storing ingredient information in `json` format that actually works -- are ingredients all going to be dicts? If so, then what about substitutable ingredients like 'veg stock / chicken stock'? I'm conflicted about standard json conventions vs how to make searches more efficient (i.e. I think `dict` formats are just better for searchability)
+- Either figure out how I'm going to actually edit `json` files or find a completely new kind of file format to work with.
 
 ## Dropped
 

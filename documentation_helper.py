@@ -35,11 +35,9 @@ def get_python_filenames():
     return python_files
 
 
-if __name__ == "__main__":
-    args = sys.argv
-    if len(args) > 1:
-        match args[1]:
-            case "--functions":
-                print_all_functions()
-            case "--filenames":
-                print(get_python_filenames())
+def string_to_array(input_string:str) -> list:
+    split_string = input_string.split('|')
+    output = []
+    for element in split_string:
+        output.append(element.strip())
+    return output
